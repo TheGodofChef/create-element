@@ -36,6 +36,7 @@ export default defineConfig({
 		lib: {
 			entry: resolve(__dirname, './index.ts'),
 			name: 'CreateElement',
+			fileName: 'index',
 			formats: ['es'],
 		},
 		rollupOptions: {
@@ -63,6 +64,9 @@ export default defineConfig({
 						return 'hooks'
 					}
 					if (id.includes('/packages/utils')) {
+						return 'utils'
+					}
+					if (id.includes('plugin-vue:export-helper')) {
 						return 'utils'
 					}
 					for (const item of COMP_NAMES) {

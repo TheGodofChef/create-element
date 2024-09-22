@@ -9,6 +9,7 @@ export default defineConfig({
 		lib: {
 			entry: resolve(__dirname, './index.ts'),
 			name: 'CreateElement',
+			fileName: 'index',
 			formats: ['umd'],
 		},
 		rollupOptions: {

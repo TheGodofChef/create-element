@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "Components library by Vue3 + TS for Create Element",
   "type": "module",
-  "main": "./dist/umd/create-element.umd.cjs",
+  "main": "./dist/umd/index.umd.cjs",
   "module": "./dist/es/index.mjs",
   "types": "./dist/types/core/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/es/index.js",
-      "require": "./dist/umd/create-element.umd.cjs",
+      "require": "./dist/umd/index.umd.cjs",
       "types": "./dist/types/core/index.d.ts"
     },
     "./dist/": {
