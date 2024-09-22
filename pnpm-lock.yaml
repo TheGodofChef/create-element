@@ -36,6 +36,9 @@ importers:
       '@fortawesome/vue-fontawesome':
         specifier: ^3.0.8
         version: 3.0.8(@fortawesome/fontawesome-svg-core@6.6.0)(vue@3.5.7(typescript@5.6.2))
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: 2.11.8
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
@@ -51,6 +54,9 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
+      async-validator:
+        specifier: ^4.2.5
+        version: 4.2.5
       move-file-cli:
         specifier: ^3.0.0
         version: 3.0.0
@@ -86,13 +92,6 @@ importers:
         version: 1.8.27(typescript@5.6.2)
 
   packages/components:
-    dependencies:
-      '@popperjs/core':
-        specifier: ^2.11.8
-        version: 2.11.8
-      async-validator:
-        specifier: ^4.2.5
-        version: 4.2.5
     devDependencies:
       '@vitest/coverage-v8':
         specifier: ^1.4.0
@@ -106,10 +105,28 @@ importers:
 
   packages/core:
     dependencies:
+      '@fortawesome/fontawesome-svg-core':
+        specifier: ^6.5.2
+        version: 6.6.0
+      '@fortawesome/free-solid-svg-icons':
+        specifier: ^6.5.2
+        version: 6.6.0
+      '@fortawesome/vue-fontawesome':
+        specifier: ^3.0.8
+        version: 3.0.8(@fortawesome/fontawesome-svg-core@6.6.0)(vue@3.5.7(typescript@5.6.2))
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: 2.11.8
+      async-validator:
+        specifier: ^4.2.5
+        version: 4.2.5
+      vue:
+        specifier: ^3.4.19
+        version: 3.5.7(typescript@5.6.2)
+    devDependencies:
       '@create-element/components':
         specifier: workspace:*
         version: link:../components
-    devDependencies:
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@20.16.5)(rollup@4.22.2)(typescript@5.6.2)(vite@5.4.7(@types/node@20.16.5))
