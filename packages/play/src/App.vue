@@ -3,7 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <ct-button>hi</ct-button>
+  <ct-button type="primary" size="small">hi</ct-button>
 </template>
 
 <style scoped>
