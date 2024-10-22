@@ -4,7 +4,7 @@
   "description": "Components library by Vue3 + TS for Create Element",
   "type": "module",
   "main": "./dist/umd/index.umd.cjs",
-  "module": "./dist/es/index.mjs",
+  "module": "./dist/es/index.js",
   "types": "./dist/types/core/index.d.ts",
   "files": [
     "dist"
