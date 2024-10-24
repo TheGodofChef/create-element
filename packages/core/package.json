@@ -24,11 +24,12 @@
     "./dist/index.css"
   ],
   "scripts": {
-    "build": "run-s build-only move-style",
-    "build-only": "run-p build-es build-umd",
+    "build": "run-p build-es build-umd",
+    "build:watch": "run-p build-es:watch build-umd:watch",
     "build-umd": "vite build --config vite.umd.config.ts",
     "build-es": "vite build --config vite.es.config.ts",
-    "move-style": "move-file dist/es/index.css dist/index.css"
+    "build-umd:watch": "vite build --watch --config vite.umd.config.ts",
+    "build-es:watch": "vite build --watch --config vite.es.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +43,9 @@
   },
   "devDependencies": {
     "@create-element/components": "workspace:*",
+    "@rollup/plugin-terser": "^0.4.4",
+    "terser": "^5.36.0",
+    "vite-plugin-compression2": "^1.3.0",
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {

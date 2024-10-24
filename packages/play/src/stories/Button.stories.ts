@@ -2,7 +2,7 @@ import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn, within, userEvent, expect } from '@storybook/test'
 
 import { CtButton, CtButtonGroup } from 'create-element'
-import 'create-element/dist/index.css'
+import 'create-element/dist/theme/Button.css'
 
 type Story = StoryObj<typeof CtButton> & { argTyps?: ArgTypes }
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { CtCollapse, CtCollapseItem } from 'create-element'
-import 'create-element/dist/index.css'
+import 'create-element/dist/theme/Collapse.css'
 
 type Story = StoryObj<typeof CtCollapse>
 

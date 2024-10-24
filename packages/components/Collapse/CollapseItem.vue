@@ -37,4 +37,6 @@ function handleClick() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+@import './style.css';
+</style>
