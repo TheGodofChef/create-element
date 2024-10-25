@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import { readdirSync } from 'fs'
-import { filter, map, delay } from 'lodash-es'
+import { readdirSync, readdir } from 'fs'
+import { filter, map, delay, defer } from 'lodash-es'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 import dts from 'vite-plugin-dts'
 import shell from 'shelljs'
@@ -24,17 +25,18 @@ function getDirectoriesSync(basePath: string) {
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
 function moveStyles() {
-	try {
-		readdirSync('./dist/es/theme')
-		shell.mv('./dist/es/theme', './dist')
-	} catch (_) {
-		delay(moveStyles, TRY_MOVE_STYLES_DELAY)
-	}
+	readdir('./dist/es/theme', (err) => {
+		if (err) return delay(moveStyles, TRY_MOVE_STYLES_DELAY)
+		defer(() => shell.mv('./dist/es/theme', './dist'))
+	})
 }
 
 export default defineConfig({
 	plugins: [
 		vue(),
+		visualizer({
+			filename: 'dist/stats.es.html',
+		}),
 		dts({
 			tsconfigPath: '../../tsconfig.build.json',
 			outDir: 'dist/types',
