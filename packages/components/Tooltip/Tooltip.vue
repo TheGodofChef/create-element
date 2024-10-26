@@ -180,7 +180,7 @@ watchEffect(() => {
 useClickOutside(containerNode, () => {
   emits('click-outside')
   if (props.trigger === "hover" || props.manual) return
-
+  console.log('fuck')
   visible.value && closeFinal()
 })
 

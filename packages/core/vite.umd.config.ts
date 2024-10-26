@@ -6,7 +6,7 @@ import { compression } from 'vite-plugin-compression2'
 
 import vue from '@vitejs/plugin-vue'
 import shell from 'shelljs'
-import hooks from './hooksPlugin'
+import { hooksPlugin as hooks } from '@create-element/vite-plugins'
 import terser from '@rollup/plugin-terser'
 
 const isProd = process.env.NODE_ENV === 'production'

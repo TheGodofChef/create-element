@@ -1,5 +1,5 @@
 import { type Ref } from 'vue'
-import useEventListener from './useEventListener'
+import useEventListener from './useEventListener.ts'
 
 export default function useClickOutside(
 	elementRef: Ref<HTMLElement | void>,
