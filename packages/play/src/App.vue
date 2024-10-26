@@ -2,22 +2,30 @@
 </script>
 
 <template>
-  <ct-button type="primary" size="small">hi</ct-button>
+  <ct-tooltip ref="tooltipRef" placement="right-end" trigger="contextmenu"
+    :popper-options="{ placement: 'right-end', strategy: 'fixed' }">
+    <ct-button icon="arrow-up">tooltip</ct-button>
+    <template #content> 弹出部分 </template>
+  </ct-tooltip>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.tooltip-base-box {
+  width: 600px;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.tooltip-base-box .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.tooltip-base-box .center {
+  justify-content: center;
+}
+
+.tooltip-base-box .box-item {
+  width: 110px;
+  margin-top: 10px;
 }
 </style>

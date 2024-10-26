@@ -5,6 +5,7 @@ import {
 	CtCollapse,
 	CtCollapseItem,
 	CtAlert,
+	CtTooltip,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -15,4 +16,5 @@ export default [
 	CtCollapse,
 	CtCollapseItem,
 	CtAlert,
+	CtTooltip,
 ] as Plugin[]

@@ -32,8 +32,8 @@ describe('install', () => {
 
     expect(compA.install).toBeDefined()
     expect(compB.install).toBeDefined()
-    expect(wrapper.findComponent(compA)).toBeTruthy()
-    expect(wrapper.findComponent(compB)).toBeTruthy()
+    expect(app._context.components['CompA']).toBeTruthy()
+    expect(app._context.components['CompB']).toBeFalsy()
    })
 
    it('makeInstaller shoule be worked', () => {
