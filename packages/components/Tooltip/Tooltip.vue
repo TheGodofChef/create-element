@@ -18,7 +18,7 @@
 
 <script setup lang='ts'>
 import type { TooltipProps, TooltipEmits, TooltipInstance } from './types'
-import { debounce, isNil, type DebouncedFunc, bind } from 'lodash-es'
+import { debounce, type DebouncedFunc, bind } from 'lodash-es'
 import { computed, onUnmounted, ref, watch, watchEffect, type Ref } from 'vue'
 import { createPopper, type Instance } from '@popperjs/core'
 import { useClickOutside, useEventListener } from '@create-element/hooks'
@@ -126,9 +126,7 @@ function attachEvents() {
 let popperInstance: null | Instance
 
 function destroyPopperInstance() {
-  if (isNil(popperInstance)) return
-
-  popperInstance.destroy()
+  popperInstance?.destroy()
   popperInstance = null
 }
 
