@@ -57,9 +57,9 @@ describe("Button.vue", () => {
 
   test("icon button", () => {
     const wrapper = mount(Button, {
-      /* props: {
+      props: {
         icon: "arrow-up",
-      }, */
+      },
       slots: {
         default: "icon button",
       },
