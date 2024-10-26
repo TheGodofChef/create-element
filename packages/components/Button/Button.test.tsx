@@ -1,10 +1,78 @@
 import { describe, it, expect, vi, test } from "vitest";
 import { mount } from "@vue/test-utils";
 
+import Icon from "../Icon/Icon.vue";
 import Button from "./Button.vue";
 import ButtonGroup from "./ButtonGroup.vue";
 
 describe("Button.vue", () => {
+  const onClick = vi.fn();
+  test("basic button", async () => {
+    const wrapper = mount(() => (
+      <Button type="primary" {...{ onClick }}>
+        button content
+      </Button>
+    ));
+
+    // class
+    expect(wrapper.classes()).toContain("ct-button--primary");
+
+    // slot
+    expect(wrapper.get("button").text()).toBe("button content");
+
+    // events
+    await wrapper.get("button").trigger("click");
+    expect(onClick).toHaveBeenCalledOnce();
+  });
+
+  test("loading button", () => {
+    const wrapper = mount(Button, {
+      props: {
+        loading: true,
+      },
+      slots: {
+        default: "loading button",
+      },
+      global: {
+        stubs: ["CtIcon"],
+      },
+    });
+
+    // class
+    expect(wrapper.classes()).toContain("is-loading");
+
+    // attrs
+    expect(wrapper.attributes("disabled")).toBeDefined();
+    expect(wrapper.find("button").element.disabled).toBeTruthy();
+
+    // events
+    wrapper.get("button").trigger("click");
+    expect(wrapper.emitted()).not.toHaveProperty("click");
+
+    // icon
+    const iconElement = wrapper.findComponent(Icon);
+    expect(iconElement.exists()).toBeTruthy();
+    expect(iconElement.attributes("icon")).toBe("spinner");
+  });
+
+  test("icon button", () => {
+    const wrapper = mount(Button, {
+      /* props: {
+        icon: "arrow-up",
+      }, */
+      slots: {
+        default: "icon button",
+      },
+      global: {
+        stubs: ["CtIcon"],
+      },
+    });
+
+    const iconElement = wrapper.findComponent(Icon);
+    expect(iconElement.exists()).toBeTruthy();
+    expect(iconElement.attributes("icon")).toBe("arrow-up");
+  });
+
   // Props: type
   it("should has the correct type class when type prop is set", () => {
     const types = ["primary", "success", "warning", "danger", "info"];

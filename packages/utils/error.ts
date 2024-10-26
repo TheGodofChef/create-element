@@ -7,15 +7,19 @@ class CtUIError extends Error {
 	}
 }
 
+function createCtUIError(scope: string, msg: string) {
+	return new CtUIError(`[${scope}]:${msg}`)
+}
+
 export function throwError(scope: string, msg: string) {
-	throw new CtUIError(`[${scope}]:${msg}`)
+	throw createCtUIError(scope, msg)
 }
 
 export function debugWarn(error: Error): void
 export function debugWarn(scope: string, msg: string): void
 export function debugWarn(scope: string | Error, msg?: string): void {
 	if (process.env.NODE_ENV !== 'production') {
-		const err = isString(scope) ? new CtUIError(`[${scope}]:${msg}`) : scope
+		const err = isString(scope) ? createCtUIError(scope, msg!) : scope
 		console.warn(err)
 	}
 }
