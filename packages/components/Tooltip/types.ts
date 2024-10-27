@@ -2,7 +2,7 @@ import type { Placement, Options } from '@popperjs/core'
 
 export interface TooltipProps {
 	content?: string
-	trigger: 'hover' | 'click' | 'contextmenu'
+	trigger?: 'hover' | 'click' | 'contextmenu'
 	placement?: Placement
 	manual?: boolean
 	disabled?: boolean

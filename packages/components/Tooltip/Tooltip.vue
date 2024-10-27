@@ -76,8 +76,8 @@ const popperOptions = computed(() => {
   }
 })
 
-const openDelay = computed(() => props.trigger === 'hover' ? props.showTimeOut : 0)
-const closeDelay = computed(() => props.trigger === 'hover' ? props.hideTimeOut : 0)
+const openDelay = computed(() => props.trigger === 'hover' ? props.showTimeout : 0)
+const closeDelay = computed(() => props.trigger === 'hover' ? props.hideTimeout : 0)
 
 let openDebounce: DebouncedFunc<() => void> | void
 let closeDebounce: DebouncedFunc<() => void> | void
@@ -178,7 +178,6 @@ watchEffect(() => {
 useClickOutside(containerNode, () => {
   emits('click-outside')
   if (props.trigger === "hover" || props.manual) return
-  console.log('fuck')
   visible.value && closeFinal()
 })
 

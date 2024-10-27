@@ -7,8 +7,12 @@
           {{ title }}
         </div>
         <div class="ct-popconfirm__action">
-          <ct-button size="small" :type="cancelButtonType" @click="cancel">{{ cancelButtonText }}</ct-button>
-          <ct-button size="small" :type="confirmButtonType" @click="confirm">{{ confirmButtonText }}</ct-button>
+          <ct-button class="ct-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
+            {{ cancelButtonText }}
+          </ct-button>
+          <ct-button class="ct-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
+            {{ confirmButtonText }}
+          </ct-button>
         </div>
       </div>
     </template>
