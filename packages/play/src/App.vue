@@ -1,16 +1,15 @@
 <template>
-  <!-- <ct-tooltip ref="tooltipRef" placement="right-end" trigger="contextmenu"
+  <ct-tooltip ref="tooltipRef" placement="right-end" trigger="contextmenu"
     :popper-options="{ placement: 'right-end', strategy: 'fixed' }">
     <ct-button icon="arrow-up">tooltip</ct-button>
     <template #content> 弹出部分 </template>
-</ct-tooltip>
+  </ct-tooltip>
 
-<ct-popconfirm title="确定删除吗？" @confirm="confirm" @cancel="cancel">
-  <ct-button icon="arrow-up" type='primary' size="samll">popconfirm</ct-button>
-</ct-popconfirm>
--->
-  <ct-dropdown :items="dropdownOptions" type='primary' size="small" split-button
-    @click="dropDownClick">dropdown</ct-dropdown>
+  <ct-popconfirm title="确定删除吗？" @confirm="confirm" @cancel="cancel">
+    <ct-button icon="arrow-up" type='primary' size="samll">popconfirm</ct-button>
+  </ct-popconfirm>
+
+  <ct-dropdown :items="dropdownOptions" size="small" split-button>dropdown</ct-dropdown>
 </template>
 
 <script setup lang="ts">
@@ -27,15 +26,15 @@ const cancel = () => {
 const dropdownOptions = ref([
   {
     label: "Option A",
-    command: 'a'
+    // name: 'a'
   },
   {
     label: "Option B",
-    command: 'b'
+    // name: 'b'
   },
   {
     label: "Option C",
-    command: 'c',
+    // name: 'c',
     divided: true,
   },
 ]);
