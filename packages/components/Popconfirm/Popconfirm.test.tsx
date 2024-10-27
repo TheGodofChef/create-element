@@ -97,6 +97,7 @@ describe('Popconfirm.vue', () => {
 
     await vi.runAllTimers();
     confirmButton.trigger("click");
+    await vi.runAllTimers();
     expect(wrapper.find(".ct-popconfirm").exists()).toBeFalsy();
     expect(onConfirm).toBeCalled();
 

@@ -25,7 +25,6 @@
       <slot name="reference"></slot>
     </template>
   </ct-tooltip>
-  <div class="ct-popconfirm"></div>
 </template>
 
 <script setup lang='tsx'>
