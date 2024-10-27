@@ -8,8 +8,8 @@ export interface TooltipProps {
 	disabled?: boolean
 	popperOptions?: Partial<Options>
 	transition?: string
-	showTimeOut?: number
-	hideTimeOut?: number
+	showTimeout?: number
+	hideTimeout?: number
 }
 
 export interface TooltipEmits {

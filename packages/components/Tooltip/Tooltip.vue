@@ -37,8 +37,8 @@ const props = withDefaults(defineProps<_TooltipProps>(), {
   placement: 'bottom',
   trigger: 'hover',
   transition: 'fade',
-  showTimeOut: 0,
-  hideTimeOut: 0,
+  showTimeout: 0,
+  hideTimeout: 0,
 })
 
 const emits = defineEmits<TooltipEmits>()
