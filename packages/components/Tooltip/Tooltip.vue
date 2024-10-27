@@ -5,7 +5,7 @@
     </div>
     <slot name="default" v-else></slot>
 
-    <transition :name="transition" @aftct-leave="destroyPopperInstance">
+    <transition :name="transition" @after-leave="destroyPopperInstance">
       <div class="ct-tooltip__popper" ref="popperNode" v-on="dropdownEvents" v-if="visible">
         <slot name="content">
           {{ content }}
@@ -18,14 +18,15 @@
 
 <script setup lang='ts'>
 import type { TooltipProps, TooltipEmits, TooltipInstance } from './types'
+import type { ButtonInstance } from "../Button";
 import { debounce, type DebouncedFunc, bind } from 'lodash-es'
 import { computed, onUnmounted, ref, watch, watchEffect, type Ref } from 'vue'
 import { createPopper, type Instance } from '@popperjs/core'
-import { useClickOutside, useEventListener } from '@create-element/hooks'
+import { useClickOutside } from '@create-element/hooks'
 import useEvenstToTiggerNode from './useEventsToTriggerNode'
 
 interface _TooltipProps extends TooltipProps {
-  virtualRef?: HTMLElement | void
+  virtualRef?: HTMLElement | ButtonInstance | void
   virtualTriggering?: boolean
 }
 
@@ -54,9 +55,7 @@ const popperNode = ref<HTMLElement>()
 
 const triggerNode = computed(() => {
   if (props.virtualTriggering) {
-    return (
-      (props.virtualRef as HTMLElement) ?? _triggerNode.value
-    )
+    return (props.virtualRef as HTMLElement) ?? _triggerNode.value
   }
   return _triggerNode.value as HTMLElement
 })
