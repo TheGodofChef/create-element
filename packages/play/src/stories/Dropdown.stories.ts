@@ -7,6 +7,7 @@ import {
 	CtButton,
 } from 'create-element'
 import 'create-element/dist/theme/Dropdown.css'
+import 'create-element/dist/theme/Button.css'
 
 type Story = StoryObj<typeof CtDropdown> & { argTypes?: ArgTypes }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="ct-dropdown" :class="{ 'is-disabled': props.disabled }">
-    <ct-tooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef"
+    <ct-tooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="triggerRef"
       @visible-change="$emit('visible-change', $event)">
       <ct-button-group v-if="splitButton" :type="type" :size="size" :disabled="disabled">
         <ct-button @click="$emit('click', $event)">
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang='tsx'>
-import { computed, provide, ref, unref } from 'vue';
+import { computed, provide, ref } from 'vue';
 import type { DropdownProps, DropdownEmits, DropdownInstance, DropdownContext, DropdownItemProps } from './types'
 import type { TooltipInstance } from '../Tooltip/types'
 import { type ButtonInstance, CtButton, CtButtonGroup } from '../Button/index'
@@ -49,7 +49,6 @@ const slots = defineSlots()
 
 const tooltipRef = ref<TooltipInstance>()
 const triggerRef = ref<ButtonInstance>()
-const virtualRef = unref(computed(() => triggerRef.value?.ref))
 
 const tooltipProps = computed(() => omit(props, ['items', 'hideAfterClick', 'size', 'type', 'splitButton']))
 
