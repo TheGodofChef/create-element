@@ -20,7 +20,7 @@
 <script setup lang='tsx'>
 import type { CollapseItemProps } from './types'
 import { computed, inject } from 'vue'
-import { COLLAPSE_CTX_KEY } from './contants'
+import { COLLAPSE_CTX_KEY } from './constants'
 import CtIcon from '../Icon/Icon.vue';
 import transitionEvents from './transitionEvents';
 

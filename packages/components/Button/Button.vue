@@ -25,7 +25,7 @@ import { ref, computed, inject } from 'vue'
 import type { ButtonProps, ButtonEmits, ButtonInstance } from './types'
 import { throttle } from 'lodash-es'
 import CtIcon from '../Icon/Icon.vue'
-import { BUTTON_GROUP_CTX_KEY } from './contants'
+import { BUTTON_GROUP_CTX_KEY } from './constants'
 defineOptions({
 	name: 'CtButton',
 })

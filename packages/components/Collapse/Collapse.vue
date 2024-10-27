@@ -7,7 +7,7 @@
 <script setup lang='tsx'>
 import { ref, provide, watch, watchEffect } from 'vue';
 import type { CollapseProps, CollapseEmits, CollapseItemName } from './types'
-import { COLLAPSE_CTX_KEY } from './contants'
+import { COLLAPSE_CTX_KEY } from './constants'
 import { debugWarn } from '@create-element/utils'
 
 const COMP_NAME = 'CtCollapse' as const
