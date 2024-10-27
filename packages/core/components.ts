@@ -9,6 +9,7 @@ import {
 	CtPopconfirm,
 	CtDropdown,
 	CtDropdownItem,
+	CtConfigProvider,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -23,4 +24,5 @@ export default [
 	CtPopconfirm,
 	CtDropdown,
 	CtDropdownItem,
+	CtConfigProvider,
 ] as Plugin[]

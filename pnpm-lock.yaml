@@ -11,6 +11,9 @@ importers:
       '@create-element/hooks':
         specifier: workspace:*
         version: link:packages/hooks
+      '@create-element/locale':
+        specifier: workspace:*
+        version: link:packages/locale
       '@create-element/theme':
         specifier: workspace:*
         version: link:packages/theme
@@ -114,6 +117,9 @@ importers:
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.6.2)
+      vue3-i18n:
+        specifier: ^1.1.5
+        version: 1.1.5(vue@3.5.7(typescript@5.6.2))
 
   libs/vite-plugins: {}
 
@@ -179,6 +185,8 @@ importers:
       vue:
         specifier: ^3.4.19
         version: 3.5.7(typescript@5.6.2)
+
+  packages/locale: {}
 
   packages/play:
     devDependencies:
@@ -3528,6 +3536,11 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '*'
+
+  vue3-i18n@1.1.5:
+    resolution: {integrity: sha512-DN5XfE0z6BnFxjbP/qW8AKI5QCex97L2l8z7G76ccTkfTsJ18n4mXGCy4K9H2rm4FlzDx/USPlPqQK64yXQqDg==}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue@3.5.7:
     resolution: {integrity: sha512-JcFm0f5j8DQO9E07pZRxqZ/ZsNopMVzHYXpKvnfqXFcA4JTi+4YcrikRn9wkzWsdj0YsLzlLIsR0zzGxA2P6Wg==}
@@ -7402,6 +7415,10 @@ snapshots:
       '@vue/language-core': 1.8.27(typescript@5.6.2)
       semver: 7.6.3
       typescript: 5.6.2
+
+  vue3-i18n@1.1.5(vue@3.5.7(typescript@5.6.2)):
+    dependencies:
+      vue: 3.5.7(typescript@5.6.2)
 
   vue@3.5.7(typescript@5.6.2):
     dependencies:

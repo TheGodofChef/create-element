@@ -8,10 +8,10 @@
         </div>
         <div class="ct-popconfirm__action">
           <ct-button class="ct-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
-            {{ cancelButtonText }}
+            {{ cancelButtonText || t('popconfirm.cancelButtonText') }}
           </ct-button>
           <ct-button class="ct-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
-            {{ confirmButtonText }}
+            {{ confirmButtonText || t('popconfirm.confirmButtonText') }}
           </ct-button>
         </div>
       </div>
@@ -30,6 +30,7 @@
 <script setup lang='tsx'>
 import { computed, ref } from 'vue';
 import { addUnit } from '@create-element/utils'
+import { useLocale } from '@create-element/hooks'
 import CtButton from '../Button/Button.vue'
 import CtIcon from '../Icon/Icon.vue'
 import CtTooltip from '../Tooltip/Tooltip.vue'
@@ -44,18 +45,17 @@ defineOptions({
 const props = withDefaults(defineProps<PopconfirmProps>(), {
   title: '',
   confirmButtonType: 'primary',
-  confirmButtonText: 'Yes',
-  cancelButtonText: 'No',
   icon: 'question-circle',
   iconColor: '#f90',
   hideAfter: 200,
   width: 150,
 })
+
 const emits = defineEmits<PopconfirmEmits>()
-
 const tooltipRef = ref<TooltipInstance>()
-
 const style = computed(() => ({ width: addUnit(props.width) }))
+
+const { t } = useLocale()
 
 function hidePopper() {
   tooltipRef.value?.hide()
