@@ -38,4 +38,15 @@ describe('Message', () => {
     await rAF()
   })
 
+  test('message offset', async () => {
+    message({message: 'hello msg', duration: 0, offset: 100})
+    message({message: 'hello msg', duration: 0, offset: 50})
+    await rAF()
+
+    const elements = document.querySelectorAll('.ct-message')
+    expect(elements.length).toBe(2)
+
+    expect(getTopValue(elements[0])).toBe(100)
+    expect(getTopValue(elements[1])).toBe(150)
+  })
 })

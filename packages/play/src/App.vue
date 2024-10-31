@@ -11,6 +11,8 @@
 
   <ct-dropdown :items="dropdownOptions" size="small" split-button>dropdown</ct-dropdown>
   <ct-button @click="handleBtnClick">Success</ct-button>
+  <ct-alert ref="alertRef" title="标题" description="这是一段描述" type="success" effect="light" :closable="true"
+    :showIcon="true" :visible="true"></ct-alert>
 </template>
 
 <script setup lang="ts">
@@ -44,7 +46,7 @@ const dropDownClick = () => {
 }
 
 function handleBtnClick() {
-  CtMessage.success("Button Click");
+  CtMessage({ message: "Button Click", type: 'success', showClose: true });
 }
 </script>
 

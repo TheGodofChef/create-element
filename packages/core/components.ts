@@ -11,6 +11,7 @@ import {
 	CtDropdownItem,
 	CtConfigProvider,
 	CtMessage,
+	CtNotification,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -27,4 +28,5 @@ export default [
 	CtDropdownItem,
 	CtConfigProvider,
 	CtMessage,
+	CtNotification,
 ] as Plugin[]
