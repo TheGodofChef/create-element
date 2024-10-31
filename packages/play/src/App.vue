@@ -10,11 +10,12 @@
   </ct-popconfirm>
 
   <ct-dropdown :items="dropdownOptions" size="small" split-button>dropdown</ct-dropdown>
+  <ct-button @click="handleBtnClick">Success</ct-button>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import { CtMessage } from 'create-element'
 
 const confirm = () => {
   console.log('confirm')
@@ -40,6 +41,10 @@ const dropdownOptions = ref([
 ]);
 const dropDownClick = () => {
   console.log('dropDownClick')
+}
+
+function handleBtnClick() {
+  CtMessage.success("Button Click");
 }
 </script>
 
