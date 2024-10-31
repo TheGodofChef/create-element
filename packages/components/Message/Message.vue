@@ -12,7 +12,7 @@
           <render-vnode v-if="message" :vNode="message"></render-vnode>
         </slot>
       </div>
-      <div calss="er-message__close" v-if="showClose">
+      <div class="ct-message__close" v-if="showClose">
         <ct-icon icon="xmark" @click.stop="close"></ct-icon>
       </div>
     </div>
@@ -33,7 +33,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<MessageProps>(), {
   type: 'info',
-  duration: 500,
+  duration: 3000,
   offset: 10,
   transitionName: 'fade-up',
 })
