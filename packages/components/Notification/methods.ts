@@ -9,12 +9,19 @@ import type {
 	NotificationType,
 	NotificationParams,
 } from './types'
-import { NotificationTypes } from './types'
+import { NotificationTypes, NotificationPosition } from './types'
 import { useId, useZIndex } from '@create-element/hooks'
 import { each, findIndex, get, set, isString } from 'lodash-es'
 import NotificationConstructor from './Notification.vue'
 
-const instances: NotificationInstance[] = shallowReactive([])
+const instancesMap = new Map<
+	NotificationProps['position'],
+	NotificationInstance[]
+>([])
+each(NotificationPosition, (positon) => {
+	instancesMap.set(positon, shallowReactive([]))
+})
+
 const { nextZIndex } = useZIndex()
 
 export const notificationDefaults = {
@@ -22,6 +29,7 @@ export const notificationDefaults = {
 	duration: 2000,
 	offset: 20,
 	transitionName: 'fade',
+	position: 'top-right',
 	showClose: true,
 } as const
 
@@ -33,11 +41,16 @@ const normalizeOptions = (
 	return { ...notificationDefaults, ...result } as CreateNotificationProps
 }
 
+const getInstancesByPosition = (
+	position: NotificationProps['position']
+): NotificationInstance[] => instancesMap.get(position)!
+
 const createNotification = (
 	props: CreateNotificationProps
 ): NotificationInstance => {
 	const id = useId().value
 	const container = document.createElement('div')
+	const instances = getInstancesByPosition(props.position || 'top-right')
 
 	const destroy = () => {
 		const idx = findIndex(instances, { id })
@@ -85,17 +98,21 @@ export const notification: NotificationFn & Partial<Notification> = function (
 }
 
 export function closeAll(type: NotificationType) {
-	each(instances, (instance) => {
-		if (type) {
-			instance.props.type === type && instance.handler.close()
-			return
-		}
-		instance.handler.close()
+	instancesMap.forEach((instances) => {
+		each(instances, (instance) => {
+			if (type) {
+				instance.props.type === type && instance.handler.close()
+				return
+			}
+			instance.handler.close()
+		})
 	})
 }
 
 export function getLastBottomOffset(this: NotificationProps) {
+	const instances = getInstancesByPosition(this.position || 'top-right')
 	const idx = findIndex(instances, { id: this.id })
+
 	if (idx <= 0) return 0
 
 	return get(instances, [idx - 1, 'vm', 'exposed', 'bottomOffset', 'value'])

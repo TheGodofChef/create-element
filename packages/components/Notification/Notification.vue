@@ -3,6 +3,7 @@
     @enter="boxHeight = notifyRef!.getBoundingClientRect().height">
     <div ref="notifyRef" class="ct-notification" :class="{
       [`ct-notification--${type}`]: type,
+      [horizontalClass]: true,
       'show-close': showClose,
     }" :style="customStyle" v-show="visible" role="alert" @click="onClick" @mouseenter="clearTimer"
       @mouseleave="startTimer">
@@ -40,6 +41,7 @@ const props = withDefaults(defineProps<NotificationProps>(), {
   type: 'info',
   duration: 3000,
   offset: 20,
+  position: 'top-right',
   transitionName: 'fade',
   showClose: true
 })
@@ -57,8 +59,11 @@ const { topOffset, bottomOffset } = useOffset({
 
 const iconName = computed(() => typeIconMap.get(props.type) ?? 'circle-info')
 
+const horizontalClass = computed(() => props.position.endsWith('right') ? 'right' : 'left')
+const verticalClass = computed(() => props.position.startsWith('top') ? 'top' : 'bottom')
+
 const customStyle = computed(() => ({
-  top: addUnit(topOffset.value),
+  [verticalClass.value]: addUnit(topOffset.value),
   zIndex: props.zIndex
 }))
 
