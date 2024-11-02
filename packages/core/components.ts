@@ -12,6 +12,7 @@ import {
 	CtConfigProvider,
 	CtMessage,
 	CtNotification,
+	CtInput,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -29,4 +30,5 @@ export default [
 	CtConfigProvider,
 	CtMessage,
 	CtNotification,
+	CtInput,
 ] as Plugin[]
