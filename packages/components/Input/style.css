@@ -23,6 +23,22 @@
 	line-height: var(--ct-input-height);
 	box-sizing: border-box;
 	vertical-align: middle;
+
+	/* 禁用原生password可见性切换按钮 */
+	input[type='password'] {
+		-webkit-appearance: none;
+		&::-ms-reveal {
+			display: none;
+			pointer-events: none;
+		}
+		&::-ms-clear {
+			display: none;
+		}
+		&::-webkit-credentials-cramble-button {
+			appearance: none;
+		}
+	}
+
 	&.is-disabled {
 		cursor: not-allowed;
 		.ct-input__wrapper {
