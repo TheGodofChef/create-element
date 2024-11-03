@@ -3,6 +3,7 @@ import { isFunction } from 'lodash-es'
 export * from './install'
 export * from './error'
 export * from './style'
+export * from './test'
 
 export const typeIconMap = new Map([
 	['info', 'circle-info'],
