@@ -15,6 +15,7 @@ import {
 	CtInput,
 	CtMessageBox,
 	CtLoading,
+	CtSwitch,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -35,4 +36,5 @@ export default [
 	CtInput,
 	CtMessageBox,
 	CtLoading,
+	CtSwitch,
 ] as Plugin[]
