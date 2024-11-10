@@ -15,6 +15,7 @@ import {
 	CtInput,
 	CtMessageBox,
 	CtLoading,
+	CtSwitch,
 	CtSelect,
 	CtOption,
 } from '@create-element/components'
@@ -37,6 +38,7 @@ export default [
 	CtInput,
 	CtMessageBox,
 	CtLoading,
+	CtSwitch,
 	CtSelect,
 	CtOption,
 ] as Plugin[]
