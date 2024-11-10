@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading">
+  <div v-loading.fullscreen.lock="loading">
     <ct-tooltip ref="tooltipRef" placement="right-end" trigger="contextmenu"
       :popper-options="{ placement: 'right-end', strategy: 'fixed' }">
       <ct-button icon="arrow-up">tooltip</ct-button>
@@ -51,18 +51,18 @@ const dropDownClick = () => {
 const loading = ref(false)
 function handleBtnClick() {
   /* CtMessage({ message: "Button Click", type: 'success', showClose: true }); */
-  /* loading.value = true
+  loading.value = true
   setTimeout(() => {
     loading.value = false
-  }, 2000) */
-  const loading = CtLoading.service({
+  }, 2000)
+  /* const loading = CtLoading.service({
     lock: true,
     text: 'Loading',
     background: 'rgba(0, 0, 0, 0.7)',
   })
   setTimeout(() => {
     loading.close()
-  }, 2000)
+  }, 2000) */
 }
 </script>
 
