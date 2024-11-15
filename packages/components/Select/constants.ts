@@ -16,7 +16,7 @@ export const POPPER_OPTIONS: any = {
 			name: 'sameWidth',
 			enabled: true,
 			fn: ({ state }: { state: any }) => {
-				state.style.popper.width = `${state.rects.reference.width}px`
+				state.styles.popper.width = `${state.rects.reference.width}px`
 			},
 			phase: 'beforeWrite',
 			requires: ['computedStyles'],
