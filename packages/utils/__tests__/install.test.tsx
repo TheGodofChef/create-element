@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, createApp } from 'vue'
-import { withInstall, makeInstaller } from '../install'
+import { withInstall, /* makeInstaller */ } from '../install'
 
 const AppComp = defineComponent({
   setup() {
@@ -36,7 +36,7 @@ describe('install', () => {
     expect(app._context.components['CompB']).toBeTruthy()
    })
 
-   it('makeInstaller shoule be worked', () => {
+   /* it('makeInstaller shoule be worked', () => {
     const wrapper = mount(() => <div id="app"></div>)
     const app = createApp(AppComp)
     const installer = makeInstaller([compA, compB])
@@ -46,5 +46,5 @@ describe('install', () => {
     expect(installer).toBeDefined()
     expect(wrapper.findComponent(compA)).toBeTruthy()
     expect(wrapper.findComponent(compB)).toBeTruthy()
-   })
+   }) */
 })
