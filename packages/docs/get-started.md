@@ -30,7 +30,7 @@ createApp(App).use(CtElement).mount('#app')
 
 ```vue
 <template>
-	<er-button>我是 Button</er-button>
+	<ct-button>我是 Button</ct-button>
 </template>
 ```
 
@@ -40,7 +40,7 @@ Create-Element 提供了基于 ES Module 的开箱即用的 Tree Shaking 功能�
 
 ```vue
 <template>
-	<er-button>我是 Button</er-button>
+	<ct-button>我是 Button</ct-button>
 </template>
 <script>
 import { CtButton } from 'create-element'
