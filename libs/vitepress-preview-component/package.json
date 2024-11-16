@@ -1,8 +1,7 @@
 {
-  "name": "@vitepress-preview/component",
-  "version": "2.3.2",
+  "name": "vitepress-preview-component",
+  "version": "0.0.1",
   "private": true,
-  "description": "preview component of code and component in vitepress",
   "type": "module",
   "main": "./.dist/preview-component.umd.cjs",
   "module": "./.dist/preview-component.js",
@@ -29,12 +28,11 @@
     "plugins",
     "component"
   ],
-  "license": "MIT",
   "peerDependencies": {
     "vitepress": "*",
     "vue": "*"
   },
   "devDependencies": {
-    "sass": "^1.54.8"
+    "sass": "^1.77.6"
   }
 }

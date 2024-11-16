@@ -1,9 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import { type App } from 'vue'
 import CtElement, { zhCn } from 'create-element'
-import { ElementPlusContainer } from '@vitepress-demo-preview/component'
+import { ElementPlusContainer } from 'vitepress-preview-component'
 
-import '@vitepress-preview/component/style.css'
+import 'vitepress-preview-component/style.css'
 import 'create-element/dist/index.css'
 
 export default {

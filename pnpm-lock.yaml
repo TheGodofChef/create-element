@@ -32,9 +32,6 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.5
         version: 2.4.6
-      async-validator:
-        specifier: ^4.2.5
-        version: 4.2.5
       create-element:
         specifier: workspace:*
         version: link:packages/core
@@ -75,6 +72,9 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
+      async-validator:
+        specifier: ^4.2.5
+        version: 4.2.5
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -133,7 +133,7 @@ importers:
         version: 3.5.7(typescript@5.6.2)
     devDependencies:
       sass:
-        specifier: ^1.54.8
+        specifier: ^1.77.6
         version: 1.81.0
 
   packages/components: {}
@@ -180,18 +180,15 @@ importers:
 
   packages/docs:
     dependencies:
-      '@vitepress-demo-preview/component':
-        specifier: ^2.3.2
-        version: 2.3.2(vitepress@1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2))(vue@3.5.7(typescript@5.6.2))
       '@vitepress-demo-preview/plugin':
         specifier: ^1.2.3
         version: 1.2.3(markdown-it-container@3.0.0)(vitepress@1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2))(vue@3.5.7(typescript@5.6.2))
-      '@vitepress-preview/component':
-        specifier: workspace:*
-        version: link:../../libs/vitepress-preview-component
       vitepress:
         specifier: 1.1.4
         version: 1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2)
+      vitepress-preview-component:
+        specifier: workspace:*
+        version: link:../../libs/vitepress-preview-component
 
   packages/hooks:
     dependencies:
@@ -1231,12 +1228,6 @@ packages:
     peerDependencies:
       vite: ^5.0.0
       vue: ^3.2.25
-
-  '@vitepress-demo-preview/component@2.3.2':
-    resolution: {integrity: sha512-+GCYl3eHA7uoBGZyH2nTP1uab6pHFGEdykj5bSz4Nt2carH05xomBf18kBecuK1SncSqB7kWV/6JHT2Y349NbQ==}
-    peerDependencies:
-      vitepress: '*'
-      vue: ^3.2.0
 
   '@vitepress-demo-preview/plugin@1.2.3':
     resolution: {integrity: sha512-uUb6UNkcRZnA+bwIEJV9fnpwnF6v3bow+9iQAOgFWdcwiII6/kT2c21RYe8ywmoIlBkniJmlqo+qeU4Mi8rx/Q==}
@@ -4923,11 +4914,6 @@ snapshots:
   '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.16.5)(sass@1.81.0)(terser@5.36.0))(vue@3.5.7(typescript@5.6.2))':
     dependencies:
       vite: 5.4.7(@types/node@20.16.5)(sass@1.81.0)(terser@5.36.0)
-      vue: 3.5.7(typescript@5.6.2)
-
-  '@vitepress-demo-preview/component@2.3.2(vitepress@1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2))(vue@3.5.7(typescript@5.6.2))':
-    dependencies:
-      vitepress: 1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2)
       vue: 3.5.7(typescript@5.6.2)
 
   '@vitepress-demo-preview/plugin@1.2.3(markdown-it-container@3.0.0)(vitepress@1.1.4(@algolia/client-search@4.24.0)(@types/node@20.16.5)(@types/react@18.3.8)(async-validator@4.2.5)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.81.0)(search-insights@2.17.2)(terser@5.36.0)(typescript@5.6.2))(vue@3.5.7(typescript@5.6.2))':
