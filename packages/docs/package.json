@@ -2,7 +2,7 @@
   "name": "@create-element/docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.md",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev ./",
