@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang='tsx'>
-import type { FormProps, FormEmits, FormItemContext, FormContext, FormInstance, FormItemInstance } from './types'
+import type { FormProps, FormEmits, FormItemContext, FormContext, FormInstance } from './types'
 import { FORM_CTX_KEY } from './constants'
 import { provide, reactive, toRefs } from 'vue';
 import { each, filter, includes, size } from 'lodash-es';

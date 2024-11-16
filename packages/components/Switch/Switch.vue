@@ -21,7 +21,6 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import type { SwitchProps, SwitchEmits, SwitchInstance } from './types'
 import { debugWarn } from '@create-element/utils';
-import { useId } from '@create-element/hooks'
 import { useFormItem, useFormDisabled, useFormItemInputId } from "../Form";
 
 defineOptions({
@@ -37,7 +36,7 @@ const props = withDefaults(defineProps<SwitchProps>(), {
 const emits = defineEmits<SwitchEmits>()
 const isDisabled = useFormDisabled()
 const { formItem } = useFormItem();
-const inputId = useFormItemInputId(props, formItem)
+const { inputId } = useFormItemInputId(props, formItem)
 
 const innerValue = ref(props.modelValue)
 const inputRef = ref<HTMLInputElement>()
