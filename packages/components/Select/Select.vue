@@ -46,11 +46,12 @@ import type { InputInstance } from '../Input/types'
 
 import { computed, nextTick, provide, reactive, ref, watch, h, type VNode, onMounted } from 'vue';
 import { POPPER_OPTIONS, SELECT_CTX_KEY } from './constants'
-import { useId, useFocusController, useClickOutside } from '@create-element/hooks'
+import { useFocusController, useClickOutside } from '@create-element/hooks'
 import { each, eq, filter, find, get, size, noop, isFunction, map, assign, isNil, isBoolean, includes, debounce } from 'lodash-es'
 import { debugWarn, RenderVnode } from '@create-element/utils';
-import useKeyMap from './useKeyMap';
+import { useFormItem, useFormDisabled, useFormItemInputId } from "../Form";
 
+import useKeyMap from './useKeyMap';
 import { CtTooltip } from '../Tooltip';
 import { CtIcon } from '../Icon';
 import { CtInput } from '../Input';
@@ -87,7 +88,10 @@ const selectStates = reactive<SelectStates>({
   highlightedIndex: -1
 })
 
-const isDisabled = computed(() => props.disabled)
+const isDisabled = useFormDisabled()
+const { formItem } = useFormItem();
+const { inputId } = useFormItemInputId(props, formItem);
+
 const children = computed(() => filter(slot?.default?.(), (child) => eq(child.type, CtOption)))
 const hasChildren = computed(() => size(children.value) > 0)
 
@@ -131,7 +135,6 @@ const filterPlaceholder = computed(() => props.filterable && selectStates.select
 const timeout = computed(() => props.remote ? 300 : 100)
 const handleFilterDebounce = debounce(handleFilter, timeout.value)
 
-const inputId = useId().value
 const { wrapperRef: inputWrapperRef, isFocused, handleBlur, handleFocus } = useFocusController(inputRef)
 
 useClickOutside(selectRef, (e) => handleClickOutside(e))
@@ -191,6 +194,7 @@ function handleClear() {
   each(['change', 'update:modelValue'], (k) => emits(k as any, ''))
 
   // formItem clear
+  formItem?.clearValidate()
 }
 
 function findOption(value: string) {
@@ -309,8 +313,11 @@ watch(
   { immediate: true }
 )
 
-watch(() => props.modelValue, () => {
+watch(() => props.modelValue, (newVal, oldVal) => {
   // 表单校验逻辑 change
+  if (newVal !== oldVal) {
+    formItem?.validate('change').catch(err => debugWarn(err))
+  }
   setSelected()
 })
 

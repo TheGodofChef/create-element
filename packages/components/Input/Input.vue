@@ -17,7 +17,7 @@
         <span v-if="$slots.prefix" class="ct-input__prefix">
           <slot name="prefix"></slot>
         </span>
-        <input class="ct-input__inner" ref="inputRef" :id="useId().value"
+        <input class="ct-input__inner" ref="inputRef" :id="inputId"
           :type="showPassword ? (pwdVisible ? 'text' : 'password') : type" :disabled="isDisabled" :readonly="readonly"
           :autocomplete="autocomplete" :placeholder="placeholder" :autofocus="autofocus" :form="form"
           v-model="innerValue" v-bind="attrs" @input="handleInput" @change="handleChange" @focus="handleFocus"
@@ -35,10 +35,9 @@
       </div>
     </template>
     <template v-else>
-      <textarea class="ct-textarea__wrapper" ref="textareaRef" :id="useId().value" :disabled="isDisabled"
-        :readonly="readonly" :autocomplete="autocomplete" :placeholder="placeholder" :autofocus="autofocus" :form="form"
-        v-model="innerValue" v-bind="attrs" @input="handleInput" @change="handleChange" @focus="handleFocus"
-        @blur="handleBlur"></textarea>
+      <textarea class="ct-textarea__wrapper" ref="textareaRef" :id="inputId" :disabled="isDisabled" :readonly="readonly"
+        :autocomplete="autocomplete" :placeholder="placeholder" :autofocus="autofocus" :form="form" v-model="innerValue"
+        v-bind="attrs" @input="handleInput" @change="handleChange" @focus="handleFocus" @blur="handleBlur"></textarea>
     </template>
   </div>
 </template>
@@ -46,9 +45,11 @@
 <script setup lang='tsx'>
 import { ref, computed, watch, useAttrs, shallowRef, nextTick } from 'vue';
 import type { InputProps, InputEmits, InputInstance } from './types'
-import { useFocusController, useId } from '@create-element/hooks'
+import { useFocusController } from '@create-element/hooks'
 import { each, noop } from 'lodash-es'
+import { useFormItem, useFormDisabled, useFormItemInputId } from '../Form'
 import Icon from '../Icon/Icon.vue';
+import { debugWarn } from '@create-element/utils';
 
 defineOptions({
   name: 'CtInput',
@@ -70,7 +71,11 @@ const textareaRef = shallowRef<HTMLTextAreaElement>()
 const _ref = computed(() => inputRef.value || textareaRef.value)
 
 const attrs = useAttrs()
-const isDisabled = computed(() => props.disabled)
+// const isDisabled = computed(() => props.disabled)
+const isDisabled = useFormDisabled()
+const { formItem } = useFormItem()
+
+const { inputId } = useFormItemInputId(props, formItem)
 
 const shwoClear = computed(() => props.clearable && !!innerValue.value && !isDisabled.value && isFocused.value)
 
@@ -79,6 +84,7 @@ const showPwdArea = computed(() => props.type === 'password' && props.showPasswo
 const { wrapperRef, isFocused, handleFocus, handleBlur } = useFocusController(_ref, {
   afterBlur() {
     // form 校验
+    formItem?.validate('blur').catch(err => debugWarn(err))
   }
 })
 
@@ -87,6 +93,7 @@ const clear: InputInstance['clear'] = function () {
   each(['input', 'change', 'update:modelValue'], (e) => emits(e as any, ''))
   emits('clear')
   // 清空表单校验
+  formItem?.clearValidate()
 }
 const focus: InputInstance['focus'] = async function () {
   await nextTick()
@@ -115,6 +122,7 @@ function togglePwdVisible() {
 watch(() => props.modelValue, (newVal) => {
   innerValue.value = newVal
   // 表单校验触发
+  formItem?.validate('change').catch(err => debugWarn(err))
 })
 
 defineExpose<InputInstance>({

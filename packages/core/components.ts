@@ -18,6 +18,8 @@ import {
 	CtSwitch,
 	CtSelect,
 	CtOption,
+	CtForm,
+	CtFormItem,
 } from '@create-element/components'
 import type { Plugin } from 'vue'
 
@@ -41,4 +43,6 @@ export default [
 	CtSwitch,
 	CtSelect,
 	CtOption,
+	CtForm,
+	CtFormItem,
 ] as Plugin[]

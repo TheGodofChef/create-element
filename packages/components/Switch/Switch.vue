@@ -22,6 +22,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 import type { SwitchProps, SwitchEmits, SwitchInstance } from './types'
 import { debugWarn } from '@create-element/utils';
 import { useId } from '@create-element/hooks'
+import { useFormItem, useFormDisabled, useFormItemInputId } from "../Form";
 
 defineOptions({
   name: 'CtSwitch',
@@ -34,11 +35,12 @@ const props = withDefaults(defineProps<SwitchProps>(), {
 })
 
 const emits = defineEmits<SwitchEmits>()
-const isDisabled = computed(() => props.disabled)
+const isDisabled = useFormDisabled()
+const { formItem } = useFormItem();
+const inputId = useFormItemInputId(props, formItem)
 
 const innerValue = ref(props.modelValue)
 const inputRef = ref<HTMLInputElement>()
-const inputId = useId().value
 const checked = computed(() => innerValue.value === props.activeValue)
 
 const focus: SwitchInstance['focus'] = function () {
@@ -62,6 +64,7 @@ onMounted(() => {
 watch(checked, (val) => {
   inputRef.value!.checked = val
   // todo
+  formItem?.validate?.('change').catch(err => debugWarn(err))
 })
 watch(() => props.modelValue, (val) => {
   innerValue.value = val
