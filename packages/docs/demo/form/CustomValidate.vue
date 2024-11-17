@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
-import { ErMessage, type FormInstance } from "create-element";
+import { CtMessage, type FormInstance } from "create-element";
 
 const formRef = ref<FormInstance>();
 const form = reactive({
@@ -32,7 +32,7 @@ const rules: any = reactive({
 const onSubmit = async (instance?: FormInstance) => {
   const valid = await instance?.validate();
   if (!valid) return;
-  ErMessage.success("submit!");
+  CtMessage.success("submit!");
 };
 
 const onReset = () => {

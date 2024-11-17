@@ -27,7 +27,7 @@
 import type { FormItemContext, FormItemProps, FormValidateFailuer, FormValidateCallback, ValidateStatus, FormItemInstance, FormItemRule } from './types'
 import Schema, { type RuleItem } from 'async-validator';
 import { FORM_CTX_KEY, FORM_ITEM_CTX_KEY } from './constants'
-import { computed, inject, nextTick, onMounted, onUnmounted, provide, reactive, ref, toRef, type Ref } from 'vue';
+import { computed, inject, nextTick, onMounted, onUnmounted, provide, reactive, ref, toRefs, type Ref } from 'vue';
 import { cloneDeep, endsWith, filter, get, includes, isArray, isNil, isNumber, isString, keys, map, size, some } from 'lodash-es';
 import { useId } from '@create-element/hooks'
 
@@ -114,7 +114,6 @@ const itemRules = computed(() => {
       rules.push({ required })
     }
   }
-
   return rules
 })
 
@@ -205,7 +204,7 @@ const removeInputId: FormItemContext['removeInputId'] = function (id: string) {
 }
 
 const formItemCtx: FormItemContext = reactive({
-  ...toRef(props),
+  ...toRefs(props),
   disabled: isDisabled.value,
   validate,
   resetField,
