@@ -5,6 +5,10 @@ description: Button 组件文档
 prev:
   link: /get-started
   text: 快速开始
+
+next:
+  link: components/collapse
+  text: Collapse 折叠面板
 ---
 
 # Button 按钮
@@ -17,6 +21,68 @@ prev:
 
 ::: preview
 demo-preview=../demo/button/Basic.vue
+:::
+
+## 禁用状态
+
+你可以使用 `disabled` 属性来定义按钮是否被禁用。
+
+::: preview
+demo-preview=../demo/button/Disabled.vue
+:::
+
+## 图标按钮
+
+使用 `icon`属性来定义按钮的图标。
+
+::: preview
+demo-preview=../demo/button/Icon.vue
+:::
+
+## 按钮组
+
+使用 `<ct-button-group>` 对多个按钮分组。
+
+::: preview
+demo-preview=../demo/button/Group.vue
+:::
+
+## 加载状态
+
+使用 `loading`属性来定义按钮的加载状态。
+
+::: tip
+您可以使用 `loading` 插槽或 `loadingIcon` 属性自定义您的 loading 图标
+
+ps: `loading` 插槽优先级高于 `loadingIcon` 属性
+:::
+
+::: preview
+demo-preview=../demo/button/Loading.vue
+:::
+
+## 按钮尺寸
+
+使用 `size`属性来定义按钮的尺寸。
+
+::: preview
+demo-preview=../demo/button/Size.vue
+:::
+
+## Tag
+
+可以自定义元素标签。例如，按钮，div，路由链接，nuxt 链接。
+
+::: preview
+demo-preview=../demo/button/Tag.vue
+:::
+
+## 节流模式
+
+可以通过 `useThrottle` 属性来定义按钮是否使用节流模式 默认为 true。
+
+::: preview
+demo-preview=../demo/button/Throttle.vue
 :::
 
 ## Button API

@@ -5,7 +5,7 @@ layout: home
 hero:
   name: 'Create-Element'
   text: '高仿 ElementPlus 组件库'
-  tagline: My great project tagline
+  tagline: 基于 Vue3 + TS 开发的组件库
   actions:
     - theme: brand
       text: 开始使用
